@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drcgkmjnqoax6"]
+
+[ext_resource type="Script" path="res://components/ComponentWaypoints.gd" id="1_1kawu"]
+
+[node name="WaypointsComponent" type="Node2D"]
+script = ExtResource("1_1kawu")
