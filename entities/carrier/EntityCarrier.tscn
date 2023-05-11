@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctfmy10fnrko4"]
+[gd_scene load_steps=13 format=3 uid="uid://qnbpbuoqcwq"]
 
 [ext_resource type="Script" path="res://entities/carrier/EntityCarrier.gd" id="1_l8m0m"]
 [ext_resource type="PackedScene" uid="uid://cuwvauah0mvm8" path="res://components/ComponentEngine.tscn" id="2_lia8e"]
@@ -6,41 +6,48 @@
 [ext_resource type="PackedScene" path="res://components/ComponentSpeed.tscn" id="4_p8o1l"]
 [ext_resource type="PackedScene" path="res://components/ComponentTeam.tscn" id="5_u6djt"]
 [ext_resource type="PackedScene" uid="uid://drcgkmjnqoax6" path="res://components/ComponentWaypoints.tscn" id="6_vmrll"]
-[ext_resource type="PackedScene" uid="uid://b8q3cy58rualg" path="res://systems/MovementCarrierSystem.tscn" id="7_sduvf"]
 [ext_resource type="Texture2D" uid="uid://sh0o8wj40dkt" path="res://icon.png" id="8_m8qp4"]
 [ext_resource type="PackedScene" uid="uid://cuto07p0aebpn" path="res://components/ComponentTransform.tscn" id="8_puqdq"]
 [ext_resource type="PackedScene" uid="uid://bkc6c7ogcqtq1" path="res://components/ComponentTurn.tscn" id="10_wkt53"]
 [ext_resource type="PackedScene" uid="uid://cb8xgnm0xk5ot" path="res://components/ComponentSelect.tscn" id="11_38jp6"]
+[ext_resource type="PackedScene" uid="uid://ox47q8ej0gno" path="res://systems/SystemMovementNonFuel.tscn" id="11_cgmpu"]
+[ext_resource type="PackedScene" uid="uid://dfmsmqlcd7hpl" path="res://systems/SystemWaypointsChange.tscn" id="12_6g0mq"]
 
 [node name="EntityCarrier" type="CharacterBody2D"]
-motion_mode = 1
 script = ExtResource("1_l8m0m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("8_m8qp4")
 
 [node name="ComponentEngine" parent="." instance=ExtResource("2_lia8e")]
-power = 10
+consumption_rate = 0.0
 
 [node name="HitpointsComponent" parent="." instance=ExtResource("3_k4r1m")]
+hitpoints_current = 10000.0
+hitpoints_max = 10000.0
+
+[node name="Area2D" parent="." instance=ExtResource("11_38jp6")]
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_p8o1l")]
+drag = 0.9
 
 [node name="TeamComponent" parent="." instance=ExtResource("5_u6djt")]
-
-[node name="WaypointsComponent" parent="." instance=ExtResource("6_vmrll")]
-
-[node name="MovementCarrierSystem" parent="." node_paths=PackedStringArray("component_waypoints", "component_speed", "component_engine", "component_transform", "component_turn") instance=ExtResource("7_sduvf")]
-component_waypoints = NodePath("../WaypointsComponent")
-component_speed = NodePath("../SpeedComponent")
-component_engine = NodePath("../ComponentEngine")
-component_transform = NodePath("../ComponentTransform")
-component_turn = NodePath("../ComponentTurn")
+team = 1
 
 [node name="ComponentTransform" parent="." node_paths=PackedStringArray("xyz") instance=ExtResource("8_puqdq")]
 xyz = NodePath("..")
 
 [node name="ComponentTurn" parent="." instance=ExtResource("10_wkt53")]
 
-[node name="ComponentSelect" parent="." instance=ExtResource("11_38jp6")]
-scale = Vector2(3, 3)
+[node name="ComponentWaypoints" parent="." instance=ExtResource("6_vmrll")]
+
+[node name="MovementCarrierSystem" parent="." node_paths=PackedStringArray("component_waypoints", "component_speed", "component_engine", "component_transform", "component_turn") instance=ExtResource("11_cgmpu")]
+component_waypoints = NodePath("../ComponentWaypoints")
+component_speed = NodePath("../SpeedComponent")
+component_engine = NodePath("../ComponentEngine")
+component_transform = NodePath("../ComponentTransform")
+component_turn = NodePath("../ComponentTurn")
+
+[node name="SystemWaypointsChange" parent="." node_paths=PackedStringArray("component_waypoints", "component_select") instance=ExtResource("12_6g0mq")]
+component_waypoints = NodePath("../ComponentWaypoints")
+component_select = NodePath("../Area2D")

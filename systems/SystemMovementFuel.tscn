@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://sk8vlgwth7t0"]
+
+[ext_resource type="Script" path="res://systems/SystemMovementFuel.gd" id="1_r4g0f"]
+
+[node name="SystemMovementFuel" type="Node2D"]
+script = ExtResource("1_r4g0f")

@@ -3,7 +3,7 @@ extends Node2D
 class_name ComponentSpeed
 
 @export var current:float = 0
-@export var drag:float = 0
+@export var drag:float = 0.5
 @export var setting:int = 0
 
 

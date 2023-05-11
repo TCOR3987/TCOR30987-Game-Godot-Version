@@ -1,0 +1,60 @@
+[gd_scene load_steps=14 format=3 uid="uid://b4mt35jl4xvvd"]
+
+[ext_resource type="Script" path="res://entities/uav_scout/UAV_Scout.gd" id="1_gfjfx"]
+[ext_resource type="Texture2D" uid="uid://sh0o8wj40dkt" path="res://icon.png" id="2_vfcvi"]
+[ext_resource type="PackedScene" uid="uid://cuwvauah0mvm8" path="res://components/ComponentEngine.tscn" id="3_q6g1w"]
+[ext_resource type="PackedScene" path="res://components/ComponentFuel.tscn" id="4_1i7py"]
+[ext_resource type="PackedScene" path="res://components/ComponentHitpoints.tscn" id="5_kplyl"]
+[ext_resource type="PackedScene" uid="uid://cb8xgnm0xk5ot" path="res://components/ComponentSelect.tscn" id="6_7yadh"]
+[ext_resource type="PackedScene" path="res://components/ComponentSpeed.tscn" id="7_kc1ib"]
+[ext_resource type="PackedScene" path="res://components/ComponentTeam.tscn" id="8_0u8ga"]
+[ext_resource type="PackedScene" uid="uid://cuto07p0aebpn" path="res://components/ComponentTransform.tscn" id="9_05guo"]
+[ext_resource type="PackedScene" uid="uid://bkc6c7ogcqtq1" path="res://components/ComponentTurn.tscn" id="10_lxell"]
+[ext_resource type="PackedScene" uid="uid://drcgkmjnqoax6" path="res://components/ComponentWaypoints.tscn" id="11_rvgq8"]
+[ext_resource type="PackedScene" uid="uid://dfmsmqlcd7hpl" path="res://systems/SystemWaypointsChange.tscn" id="12_vpfw0"]
+[ext_resource type="PackedScene" uid="uid://sk8vlgwth7t0" path="res://systems/SystemMovementFuel.tscn" id="13_x7orw"]
+
+[node name="EntityScout" type="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+script = ExtResource("1_gfjfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_vfcvi")
+
+[node name="ComponentEngine" parent="." instance=ExtResource("3_q6g1w")]
+power = 20
+
+[node name="SpeedComponent" parent="." instance=ExtResource("7_kc1ib")]
+setting = 1
+
+[node name="FuelComponent" parent="." instance=ExtResource("4_1i7py")]
+
+[node name="HitpointsComponent" parent="." instance=ExtResource("5_kplyl")]
+
+[node name="Area2D" parent="." instance=ExtResource("6_7yadh")]
+scale = Vector2(3, 3)
+selected = true
+
+[node name="TeamComponent" parent="." instance=ExtResource("8_0u8ga")]
+team = 1
+
+[node name="ComponentTransform" parent="." node_paths=PackedStringArray("xyz") instance=ExtResource("9_05guo")]
+xyz = NodePath("..")
+
+[node name="ComponentTurn" parent="." instance=ExtResource("10_lxell")]
+speed = 2.0
+
+[node name="WaypointsComponent" parent="." instance=ExtResource("11_rvgq8")]
+
+[node name="SystemWaypointsChange" parent="." node_paths=PackedStringArray("component_waypoints", "component_select") instance=ExtResource("12_vpfw0")]
+component_waypoints = NodePath("../WaypointsComponent")
+component_select = NodePath("../Area2D")
+
+[node name="SystemMovementFuel" parent="." node_paths=PackedStringArray("component_waypoints", "component_speed", "component_engine", "component_transform", "component_turn", "component_fuel") instance=ExtResource("13_x7orw")]
+component_waypoints = NodePath("../WaypointsComponent")
+component_speed = NodePath("../SpeedComponent")
+component_engine = NodePath("../ComponentEngine")
+component_transform = NodePath("../ComponentTransform")
+component_turn = NodePath("../ComponentTurn")
+component_fuel = NodePath("../FuelComponent")
