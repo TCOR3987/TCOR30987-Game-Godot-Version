@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dfmsmqlcd7hpl" path="res://systems/SystemWaypointsChange.tscn" id="12_6g0mq"]
 
 [node name="EntityCarrier" type="CharacterBody2D"]
+motion_mode = 1
 script = ExtResource("1_l8m0m")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -27,6 +28,7 @@ hitpoints_current = 10000.0
 hitpoints_max = 10000.0
 
 [node name="Area2D" parent="." instance=ExtResource("11_38jp6")]
+scale = Vector2(3, 3)
 
 [node name="SpeedComponent" parent="." instance=ExtResource("4_p8o1l")]
 drag = 0.9

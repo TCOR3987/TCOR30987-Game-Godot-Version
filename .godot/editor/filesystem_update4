@@ -1,16 +1,2 @@
 res://default_env.tres
-res://entities/carrier/EntityCarrier.tscn
-res://main.tscn
-res://components/ComponentWaypoints.tscn
-res://systems/MovementCarrierSystem.gd
-res://entities/uav_scout/UAV_Scout.tscn
-res://entities/uav_scout/UAV_Scout.gd
-res://components/ComponentEngine.gd
-res://components/ComponentFuel.gd
-res://components/ComponentSpeed.gd
-res://components/ComponentTurn.gd
-res://systems/SystemMovementNonFuel.tscn
-res://systems/SystemMovementNonFuel.gd
-res://systems/SystemMovementFuel.tscn
-res://systems/SystemMovementFuel.gd
-res://entities/carrier/EntityCarrier.gd
+res://ui/ui_main.tscn

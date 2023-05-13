@@ -22,7 +22,6 @@ func _process(delta):
 	component_speed.current += component_speed.setting * component_engine.power * float(component_fuel.current > 0) - drag_amount
 #	handles fuel consumption
 	component_fuel.current -= component_speed.setting * component_engine.consumption_rate * delta
-	print(component_fuel.current)
 #	translate
 	component_transform.xyz.move_local_x(component_speed.current * delta)
 #	rotate

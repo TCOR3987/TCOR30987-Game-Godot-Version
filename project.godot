@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="TCOR3987's Game"
-run/main_scene="res://main.tscn"
+run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
 
 [autoload]
 
-Globals="*res://globals.gd"
-SignalBus="*res://signal_bus.gd"
+Globals="*res://globals/globals.gd"
+SignalBus="*res://globals/signal_bus.gd"
 
 [gui]
 

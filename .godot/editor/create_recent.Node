@@ -1,2 +1,9 @@
+VBoxContainer
+CanvasLayer
+NavigationRegion2D
 Sprite2D
+TileMap
+CollisionShape2D
+Area2D
+MeshInstance2D
 CharacterBody2D

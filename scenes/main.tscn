@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://daabwcfcny40s"]
+
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_j2ctj"]
+[ext_resource type="PackedScene" uid="uid://qnbpbuoqcwq" path="res://entities/carrier/EntityCarrier.tscn" id="2_xo3sd"]
+[ext_resource type="PackedScene" uid="uid://b4mt35jl4xvvd" path="res://entities/uav_scout/UAV_Scout.tscn" id="3_o7ttd"]
+
+[node name="main" type="Node2D"]
+script = ExtResource("1_j2ctj")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("2_xo3sd")]
+position = Vector2(591, 290)
+
+[node name="CharacterBody2D2" parent="." instance=ExtResource("3_o7ttd")]
+position = Vector2(180, 517)
