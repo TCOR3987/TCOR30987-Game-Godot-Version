@@ -1,14 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://daabwcfcny40s"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_j2ctj"]
-[ext_resource type="PackedScene" uid="uid://qnbpbuoqcwq" path="res://entities/carrier/EntityCarrier.tscn" id="2_xo3sd"]
-[ext_resource type="PackedScene" uid="uid://b4mt35jl4xvvd" path="res://entities/uav_scout/UAV_Scout.tscn" id="3_o7ttd"]
+[ext_resource type="PackedScene" uid="uid://p51ls37dw23i" path="res://scenes/scene_ship_combat.tscn" id="2_upy3l"]
+[ext_resource type="PackedScene" uid="uid://bdd2yjvjqg844" path="res://components/ComponentSceneSelect.tscn" id="3_6n2ya"]
 
 [node name="main" type="Node2D"]
 script = ExtResource("1_j2ctj")
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_xo3sd")]
-position = Vector2(591, 290)
+[node name="ComponentSceneSelect" parent="." instance=ExtResource("3_6n2ya")]
 
-[node name="CharacterBody2D2" parent="." instance=ExtResource("3_o7ttd")]
-position = Vector2(180, 517)
+[node name="scene_ship_combat" parent="." node_paths=PackedStringArray("selected_scene") instance=ExtResource("2_upy3l")]
+selected_scene = NodePath("../ComponentSceneSelect")

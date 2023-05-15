@@ -1,2 +1,11 @@
 res://default_env.tres
+res://scenes/scene_ship_combat.tscn
+res://scenes/scene_ship_combat.gd
+res://scenes/main.tscn
+res://entities/uav_scout/UAV_Scout.tscn
+res://systems/SystemMovementFuel.tscn
+res://entities/carrier/EntityCarrier.tscn
 res://ui/ui_main.tscn
+res://components/ComponentSceneCanvasLayer.tscn
+res://components/ComponentSceneCanvasLayer.gd
+res://scenes/main.gd

@@ -1,9 +1,9 @@
 extends Node2D
 
 func _process(delta):
-	var mouse = get_global_mouse_position()
-	if Input.is_action_just_pressed("left_click"):
-		if Input.is_action_pressed("shift"):
-			SignalBus.emit_signal("waypoint_change", mouse)
-			pass
-	pass
+	if Input.is_action_just_pressed("g"):
+		$ComponentSceneSelect.current_scene = $ComponentSceneSelect.scene_enums.shipyard
+		pass
+	if Input.is_action_just_pressed("h"):
+		$ComponentSceneSelect.current_scene = $ComponentSceneSelect.scene_enums.ship_combat
+		pass

@@ -1,4 +1,7 @@
 VBoxContainer
+HBoxContainer
+Button
+Control
 CanvasLayer
 NavigationRegion2D
 Sprite2D
