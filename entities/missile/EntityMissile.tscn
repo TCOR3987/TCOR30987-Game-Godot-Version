@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgyp8qt8w18aw"]
+
+[ext_resource type="PackedScene" uid="uid://c3r6w3e0t0j8s" path="res://components/ComponentTarget.tscn" id="1_ho20l"]
+
+[node name="EntityMissile" type="Node2D"]
+
+[node name="ComponentTarget" parent="." instance=ExtResource("1_ho20l")]

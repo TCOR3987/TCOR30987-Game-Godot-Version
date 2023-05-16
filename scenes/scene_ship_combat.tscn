@@ -1,17 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://p51ls37dw23i"]
+[gd_scene load_steps=3 format=3 uid="uid://p51ls37dw23i"]
 
 [ext_resource type="Script" path="res://scenes/scene_ship_combat.gd" id="1_q1sx7"]
 [ext_resource type="PackedScene" uid="uid://qnbpbuoqcwq" path="res://entities/carrier/EntityCarrier.tscn" id="2_wxbpd"]
-[ext_resource type="PackedScene" uid="uid://b4mt35jl4xvvd" path="res://entities/uav_scout/UAV_Scout.tscn" id="3_r714p"]
 
 [node name="scene_ship_combat" type="Node2D"]
 script = ExtResource("1_q1sx7")
 
 [node name="EntityCarrier" parent="." instance=ExtResource("2_wxbpd")]
 position = Vector2(271, 289)
-
-[node name="EntityScout" parent="." instance=ExtResource("3_r714p")]
-position = Vector2(135, 439)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -22,24 +18,85 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control"]
+[node name="BarBottom" type="HBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="CommandsBox2" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="Throttle" type="HBoxContainer" parent="CanvasLayer/Control/BarBottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CommandsBox3" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="Speed0" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "0"
 
-[node name="CommandsBox" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer"]
+[node name="Speed1" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
 layout_mode = 2
-size_flags_horizontal = 3
+text = "1"
+
+[node name="Speed2" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
+layout_mode = 2
+text = "2"
+
+[node name="Speed3" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
+layout_mode = 2
+text = "3"
+
+[node name="Speed4" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
+layout_mode = 2
+text = "4"
+
+[node name="Speed5" type="Button" parent="CanvasLayer/Control/BarBottom/Throttle"]
+layout_mode = 2
+text = "5"
+
+[node name="Orders" type="HBoxContainer" parent="CanvasLayer/Control/BarBottom"]
+layout_mode = 2
+mouse_filter = 0
+alignment = 1
+
+[node name="Set" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Move"
+
+[node name="Add" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Add"
+
+[node name="Stop" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Stop"
+
+[node name="Button4" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Q"
+
+[node name="Button5" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Q"
+
+[node name="Button6" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Q"
+
+[node name="Button7" type="Button" parent="CanvasLayer/Control/BarBottom/Orders"]
+layout_mode = 2
+text = "Q"
+
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed0" to="." method="_on_speed_0_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed1" to="." method="_on_speed_1_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed2" to="." method="_on_speed_2_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed3" to="." method="_on_speed_3_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed4" to="." method="_on_speed_4_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Throttle/Speed5" to="." method="_on_speed_5_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Orders/Set" to="." method="_on_set_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Orders/Add" to="." method="_on_add_button_up"]
+[connection signal="button_up" from="CanvasLayer/Control/BarBottom/Orders/Stop" to="." method="_on_stop_button_up"]

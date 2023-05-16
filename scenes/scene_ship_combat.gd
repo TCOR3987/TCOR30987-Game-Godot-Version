@@ -3,17 +3,65 @@ extends Node2D
 class_name SceneShipCombat
 
 @export var selected_scene:ComponentSceneSelect
+var selected_unit
+var ability:enum_abilities
+
+enum enum_abilities {
+	none,
+	waypoint_set,
+	waypoint_add,
+}
 
 func _process(delta):
 	if selected_scene.current_scene == selected_scene.scene_enums.ship_combat:
+		var mouse = get_global_mouse_position()
 		$CanvasLayer.visible = true
 		self.visible = true
-		var mouse = get_global_mouse_position()
 		if Input.is_action_just_pressed("left_click"):
-			if Input.is_action_pressed("shift"):
+			if ability == enum_abilities.waypoint_set:
 				SignalBus.emit_signal("waypoint_change", mouse)
-				pass
+				ability = enum_abilities.none
+			if ability == enum_abilities.waypoint_add:
+				SignalBus.emit_signal("waypoint_add", mouse)
+				ability = enum_abilities.none
 		pass
 	else:
 		self.visible = false
 		$CanvasLayer.visible = false
+
+func _on_set_button_up():
+	ability = enum_abilities.waypoint_set
+	pass # Replace with function body.
+
+func _on_add_button_up():
+	ability = enum_abilities.waypoint_add
+	pass # Replace with function body.
+
+func _on_stop_button_up():
+	SignalBus.emit_signal("waypoints_clear")
+	pass # Replace with function body.
+
+
+func _on_speed_0_button_up():
+	SignalBus.emit_signal("speed_change", 0)
+	pass # Replace with function body.
+
+func _on_speed_1_button_up():
+	SignalBus.emit_signal("speed_change", 1)
+	pass # Replace with function body.
+
+func _on_speed_2_button_up():
+	SignalBus.emit_signal("speed_change", 2)
+	pass # Replace with function body.
+
+func _on_speed_3_button_up():
+	SignalBus.emit_signal("speed_change", 3)
+	pass # Replace with function body.
+
+func _on_speed_4_button_up():
+	SignalBus.emit_signal("speed_change", 4)
+	pass # Replace with function body.
+
+func _on_speed_5_button_up():
+	SignalBus.emit_signal("speed_change", 5)
+	pass # Replace with function body.

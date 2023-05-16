@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://qnbpbuoqcwq"]
+[gd_scene load_steps=15 format=3 uid="uid://qnbpbuoqcwq"]
 
 [ext_resource type="Script" path="res://entities/carrier/EntityCarrier.gd" id="1_l8m0m"]
 [ext_resource type="PackedScene" uid="uid://cuwvauah0mvm8" path="res://components/ComponentEngine.tscn" id="2_lia8e"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://cb8xgnm0xk5ot" path="res://components/ComponentSelect.tscn" id="11_38jp6"]
 [ext_resource type="PackedScene" uid="uid://ox47q8ej0gno" path="res://systems/SystemMovementNonFuel.tscn" id="11_cgmpu"]
 [ext_resource type="PackedScene" uid="uid://dfmsmqlcd7hpl" path="res://systems/SystemWaypointsChange.tscn" id="12_6g0mq"]
+[ext_resource type="PackedScene" uid="uid://cryg2gpvov23a" path="res://systems/SystemSpeedChange.tscn" id="13_gktey"]
+[ext_resource type="PackedScene" uid="uid://chbb5bwd6tok0" path="res://systems/SystemWaypointsDraw.tscn" id="14_exna0"]
 
 [node name="EntityCarrier" type="CharacterBody2D"]
 motion_mode = 1
@@ -52,4 +54,13 @@ component_turn = NodePath("../ComponentTurn")
 
 [node name="SystemWaypointsChange" parent="." node_paths=PackedStringArray("component_waypoints", "component_select") instance=ExtResource("12_6g0mq")]
 component_waypoints = NodePath("../ComponentWaypoints")
+component_select = NodePath("../Area2D")
+
+[node name="SystemSpeedChange" parent="." node_paths=PackedStringArray("component_speed", "component_select") instance=ExtResource("13_gktey")]
+component_speed = NodePath("../SpeedComponent")
+component_select = NodePath("../Area2D")
+
+[node name="SystemWaypointsDraw" parent="." node_paths=PackedStringArray("component_waypoints", "component_transform", "component_select") instance=ExtResource("14_exna0")]
+component_waypoints = NodePath("../ComponentWaypoints")
+component_transform = NodePath("../ComponentTransform")
 component_select = NodePath("../Area2D")

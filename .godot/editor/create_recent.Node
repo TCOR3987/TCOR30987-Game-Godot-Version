@@ -1,6 +1,7 @@
-VBoxContainer
-HBoxContainer
 Button
+HBoxContainer
+GridContainer
+VBoxContainer
 Control
 CanvasLayer
 NavigationRegion2D

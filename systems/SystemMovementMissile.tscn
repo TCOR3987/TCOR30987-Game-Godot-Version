@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d00vta1q7k40o"]
+
+[ext_resource type="Script" path="res://systems/SystemMovementMissile.gd" id="1_2e1yl"]
+
+[node name="SystemMovementMissile" type="Node2D"]
+script = ExtResource("1_2e1yl")

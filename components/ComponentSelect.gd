@@ -3,7 +3,6 @@ extends Area2D
 class_name ComponentSelect
 
 @export var selected:bool = false
-var entity
 
 func _on_input_event(viewport, event, shape_idx):
 	if Input.is_action_pressed("left_click") == true:
@@ -13,9 +12,7 @@ func _on_input_event(viewport, event, shape_idx):
 	pass # Replace with function body.
 
 func _ready():
-	entity = $".."
 	SignalBus.connect("deselect_entities", _deselect_entity)
 
 func _deselect_entity():
-	if entity != Globals.selected_unit:
-		selected = false
+	selected = false
