@@ -18,7 +18,7 @@ func _process(delta):
 				SignalBus.emit_signal("waypoint_add", mouse)
 				Globals.ship_combat_ability = Globals.ship_combat_enum_abilities.none
 			if Globals.ship_combat_ability == Globals.ship_combat_enum_abilities.missile:
-				SignalBus.emit_signal("fire_missile")
+#				SignalBus.emit_signal("fire_missile")
 				Globals.ship_combat_ability = Globals.ship_combat_enum_abilities.none
 		pass
 	else:

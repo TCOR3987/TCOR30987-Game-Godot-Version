@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bkc6c7ogcqtq1" path="res://components/ComponentTurn.tscn" id="5_e6340"]
 [ext_resource type="PackedScene" path="res://components/ComponentTeam.tscn" id="8_k3ggb"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[node name="EntityMissile" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_s7ga3")
 
@@ -28,10 +28,15 @@ component_turn = NodePath("../ComponentTurn")
 xyz = NodePath("..")
 
 [node name="SpeedComponent" parent="." instance=ExtResource("2_xoiat")]
+drag = 0.9
+setting = 1
 
 [node name="ComponentEngine" parent="." instance=ExtResource("3_7al2c")]
+power = 1
+consumption_rate = 0.0
 
 [node name="ComponentTurn" parent="." instance=ExtResource("5_e6340")]
+speed = 2.0
 
 [node name="TeamComponent" parent="." instance=ExtResource("8_k3ggb")]
 

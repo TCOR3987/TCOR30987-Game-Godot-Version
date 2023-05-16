@@ -1,13 +1,11 @@
 extends Node2D
 
 class_name SystemSpawnMissile
-var preload_missile = preload("res://entities/missile/EntityMissile.tscn")
 
-@export var component_transform:ComponentTransform
-@export var component_target:ComponentTarget
+var missile_template = preload("res://entities/missile/EntityMissile.tscn")
 @export var component_select:ComponentSelect
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	SignalBus.connect("fire_missile", fire_missile)
 	pass # Replace with function body.
@@ -16,8 +14,11 @@ func _ready():
 func _process(delta):
 	pass
 
-func fire_missile(instance_id):
+func fire_missile(id):
 	if component_select.selected == true:
-		var new_missile = preload_missile.instantiate()
-		new_missile.transform = component_transform.transform
-		new_missile.
+		var new_missile = missile_template.instantiate()
+		new_missile.set_transform_(self.global_position)
+		new_missile.set_target(id)
+		get_parent().get_parent().add_child(new_missile)
+		print(get_parent().get_children())
+		print(new_missile.get_parent())

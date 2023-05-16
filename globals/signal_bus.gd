@@ -6,6 +6,6 @@ signal waypoints_clear
 signal deselect_entities
 signal spawn_missile(target)
 signal speed_change(int)
-signal fire_missile
+signal fire_missile(int)
 
 signal entity_waypoints(Array,Vector2)

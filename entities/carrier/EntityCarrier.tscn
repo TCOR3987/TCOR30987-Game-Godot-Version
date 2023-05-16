@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://qnbpbuoqcwq"]
+[gd_scene load_steps=17 format=3 uid="uid://qnbpbuoqcwq"]
 
 [ext_resource type="Script" path="res://entities/carrier/EntityCarrier.gd" id="1_l8m0m"]
 [ext_resource type="PackedScene" uid="uid://cuwvauah0mvm8" path="res://components/ComponentEngine.tscn" id="2_lia8e"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cryg2gpvov23a" path="res://systems/SystemSpeedChange.tscn" id="13_gktey"]
 [ext_resource type="PackedScene" uid="uid://chbb5bwd6tok0" path="res://systems/SystemWaypointsDraw.tscn" id="14_exna0"]
 [ext_resource type="PackedScene" uid="uid://c3r6w3e0t0j8s" path="res://components/ComponentTarget.tscn" id="15_nasja"]
+[ext_resource type="PackedScene" uid="uid://caegaiyayglid" path="res://systems/SystemSpawnMissile.tscn" id="16_nvx4b"]
 
 [node name="EntityCarrier" type="CharacterBody2D"]
 motion_mode = 1
@@ -67,3 +68,6 @@ component_transform = NodePath("../ComponentTransform")
 component_select = NodePath("../Area2D")
 
 [node name="ComponentTarget" parent="." instance=ExtResource("15_nasja")]
+
+[node name="SystemSpawnMissile" parent="." node_paths=PackedStringArray("component_select") instance=ExtResource("16_nvx4b")]
+component_select = NodePath("../Area2D")
