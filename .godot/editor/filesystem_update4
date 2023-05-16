@@ -16,3 +16,8 @@ res://systems/SystemMovementMissile.tscn
 res://systems/SystemMovementMissile.gd
 res://systems/SystemSpawnMissile.tscn
 res://systems/SystemSpawnMissile.gd
+res://globals/globals.gd
+res://components/ComponentDetectioncone.tscn
+res://components/ComponentSelect.gd
+res://entities/carrier/EntityCarrier.gd
+res://entities/missile/EntityMissile.gd

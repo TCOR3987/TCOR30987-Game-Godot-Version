@@ -1,7 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgyp8qt8w18aw"]
+[gd_scene load_steps=10 format=3 uid="uid://bgyp8qt8w18aw"]
 
+[ext_resource type="Texture2D" uid="uid://sh0o8wj40dkt" path="res://icon.png" id="1_7gbgl"]
 [ext_resource type="PackedScene" uid="uid://c3r6w3e0t0j8s" path="res://components/ComponentTarget.tscn" id="1_ho20l"]
+[ext_resource type="Script" path="res://entities/missile/EntityMissile.gd" id="1_s7ga3"]
+[ext_resource type="PackedScene" uid="uid://d00vta1q7k40o" path="res://systems/SystemMovementMissile.tscn" id="2_8dgfo"]
+[ext_resource type="PackedScene" path="res://components/ComponentSpeed.tscn" id="2_xoiat"]
+[ext_resource type="PackedScene" uid="uid://cuwvauah0mvm8" path="res://components/ComponentEngine.tscn" id="3_7al2c"]
+[ext_resource type="PackedScene" uid="uid://cuto07p0aebpn" path="res://components/ComponentTransform.tscn" id="4_h8d71"]
+[ext_resource type="PackedScene" uid="uid://bkc6c7ogcqtq1" path="res://components/ComponentTurn.tscn" id="5_e6340"]
+[ext_resource type="PackedScene" path="res://components/ComponentTeam.tscn" id="8_k3ggb"]
 
-[node name="EntityMissile" type="Node2D"]
+[node name="CharacterBody2D" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_s7ga3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_7gbgl")
+
+[node name="SystemMovementMissile" parent="." node_paths=PackedStringArray("component_target", "component_speed", "component_engine", "component_transform", "component_turn") instance=ExtResource("2_8dgfo")]
+component_target = NodePath("../ComponentTarget")
+component_speed = NodePath("../SpeedComponent")
+component_engine = NodePath("../ComponentEngine")
+component_transform = NodePath("../ComponentTransform")
+component_turn = NodePath("../ComponentTurn")
+
+[node name="ComponentTransform" parent="." node_paths=PackedStringArray("xyz") instance=ExtResource("4_h8d71")]
+xyz = NodePath("..")
+
+[node name="SpeedComponent" parent="." instance=ExtResource("2_xoiat")]
+
+[node name="ComponentEngine" parent="." instance=ExtResource("3_7al2c")]
+
+[node name="ComponentTurn" parent="." instance=ExtResource("5_e6340")]
+
+[node name="TeamComponent" parent="." instance=ExtResource("8_k3ggb")]
 
 [node name="ComponentTarget" parent="." instance=ExtResource("1_ho20l")]

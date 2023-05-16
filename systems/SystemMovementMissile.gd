@@ -17,7 +17,8 @@ func _process(delta):
 	component_transform.xyz.move_local_x(component_speed.current * delta)
 #	rotate
 	if component_target.target != null:
-			var direction = component_target.target.global_position - component_transform.xyz.global_position
-			var angleto = component_transform.xyz.transform.x.angle_to(direction)
-			component_transform.xyz.rotate(sign(angleto) * min(delta * component_turn.speed, abs(angleto)))
+		var target_entity = instance_from_id(component_target.target)
+		var direction =  target_entity.global_position - component_transform.xyz.global_position
+		var angleto = component_transform.xyz.transform.x.angle_to(direction)
+		component_transform.xyz.rotate(sign(angleto) * min(delta * component_turn.speed, abs(angleto)))
 	pass
