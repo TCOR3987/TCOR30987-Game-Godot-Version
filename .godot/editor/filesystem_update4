@@ -1,11 +1,5 @@
 res://default_env.tres
-res://components/ComponentSelect.tscn
-res://systems/SystemSpawnMissile.tscn
-res://systems/SystemSpawnMissile.gd
-res://scenes/scene_ship_combat.tscn
-res://entities/carrier/EntityCarrier.tscn
-res://entities/missile/EntityMissile.tscn
-res://entities/missile/EntityMissile.gd
-res://globals/signal_bus.gd
 res://scenes/main.tscn
-res://components/ComponentSelect.gd
+res://rts/scene_rts.tscn
+res://rts/entities/carrier/RtsEntityCarrier.tscn
+res://scenes/main.gd

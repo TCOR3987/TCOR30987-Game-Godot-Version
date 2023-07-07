@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://jn1gfke538qn"]
+
+[ext_resource type="Script" path="res://rts/systems/movement/RtsSystemMovement.gd" id="1_wnlyc"]
+
+[node name="RtsSystemMovement" type="Node2D"]
+script = ExtResource("1_wnlyc")

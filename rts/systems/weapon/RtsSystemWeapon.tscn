@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ea12gt1r8hop"]
+
+[ext_resource type="Script" path="res://rts/systems/weapon/RtsSystemWeapon.gd" id="1_usler"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_s602y"]
+
+[node name="RtsSystemWeapon" type="Node2D"]
+script = ExtResource("1_usler")
+
+[node name="WeaponDetectionRange" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WeaponDetectionRange"]
+shape = SubResource("CircleShape2D_s602y")
+
+[connection signal="body_entered" from="WeaponDetectionRange" to="." method="_on_weapon_detection_range_body_entered"]
+[connection signal="body_exited" from="WeaponDetectionRange" to="." method="_on_weapon_detection_range_body_exited"]

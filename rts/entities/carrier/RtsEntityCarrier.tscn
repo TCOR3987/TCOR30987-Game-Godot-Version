@@ -1,0 +1,81 @@
+[gd_scene load_steps=18 format=3 uid="uid://b6hjcwo0phk1a"]
+
+[ext_resource type="Script" path="res://rts/entities/carrier/RtsEntityCarrier.gd" id="1_0jpe4"]
+[ext_resource type="Texture2D" uid="uid://sh0o8wj40dkt" path="res://icon.png" id="2_5ylur"]
+[ext_resource type="PackedScene" uid="uid://cuto07p0aebpn" path="res://components/ComponentTransform.tscn" id="2_36nso"]
+[ext_resource type="PackedScene" uid="uid://co2mvhxljdk6q" path="res://components/ComponentHitpoints.tscn" id="3_gv38t"]
+[ext_resource type="PackedScene" uid="uid://cnd7sewxyl016" path="res://components/ComponentId.tscn" id="4_22p81"]
+[ext_resource type="PackedScene" uid="uid://cb8xgnm0xk5ot" path="res://components/ComponentSelect.tscn" id="5_fe1rd"]
+[ext_resource type="PackedScene" uid="uid://c3r6w3e0t0j8s" path="res://components/ComponentTarget.tscn" id="6_8ukm8"]
+[ext_resource type="PackedScene" uid="uid://dccjcd0o3hiea" path="res://components/ComponentTeam.tscn" id="7_s2scv"]
+[ext_resource type="PackedScene" uid="uid://bkc6c7ogcqtq1" path="res://components/ComponentTurn.tscn" id="8_dr80h"]
+[ext_resource type="PackedScene" uid="uid://drcgkmjnqoax6" path="res://components/ComponentWaypoints.tscn" id="9_0pbv4"]
+[ext_resource type="PackedScene" uid="uid://jn1gfke538qn" path="res://rts/systems/movement/RtsSystemMovement.tscn" id="12_ox2h0"]
+[ext_resource type="PackedScene" uid="uid://dfmsmqlcd7hpl" path="res://systems/SystemWaypointsChange.tscn" id="12_sstfn"]
+[ext_resource type="PackedScene" uid="uid://bdj0g2t3wis8x" path="res://components/ComponentWeapon.tscn" id="13_7bfmb"]
+[ext_resource type="PackedScene" path="res://components/ComponentSpeed.tscn" id="13_m4lvf"]
+[ext_resource type="PackedScene" uid="uid://ea12gt1r8hop" path="res://rts/systems/weapon/RtsSystemWeapon.tscn" id="15_1aory"]
+[ext_resource type="PackedScene" uid="uid://chbb5bwd6tok0" path="res://systems/SystemWaypointsDraw.tscn" id="16_67g3t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8frd7"]
+
+[node name="RtsEntityCarrier" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+motion_mode = 1
+script = ExtResource("1_0jpe4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5ylur")
+
+[node name="ComponentId" parent="." instance=ExtResource("4_22p81")]
+
+[node name="HitpointsComponent" parent="." node_paths=PackedStringArray("component_id") instance=ExtResource("3_gv38t")]
+component_id = NodePath("../ComponentId")
+
+[node name="ComponentTransform" parent="." node_paths=PackedStringArray("xyz") instance=ExtResource("2_36nso")]
+xyz = NodePath("..")
+
+[node name="Area2D" parent="." instance=ExtResource("5_fe1rd")]
+scale = Vector2(3, 3)
+
+[node name="ComponentTarget" parent="." instance=ExtResource("6_8ukm8")]
+
+[node name="ComponentTurn" parent="." instance=ExtResource("8_dr80h")]
+
+[node name="ComponentWaypoints" parent="." instance=ExtResource("9_0pbv4")]
+
+[node name="SystemWaypointsChange" parent="." node_paths=PackedStringArray("component_waypoints", "component_select") instance=ExtResource("12_sstfn")]
+component_waypoints = NodePath("../ComponentWaypoints")
+component_select = NodePath("../Area2D")
+
+[node name="SpeedComponent" parent="." instance=ExtResource("13_m4lvf")]
+drag = 0.9
+consumption_rate = 0.0
+
+[node name="ComponentWeapon" parent="." instance=ExtResource("13_7bfmb")]
+range = 100.0
+
+[node name="RtsSystemMovement" parent="." node_paths=PackedStringArray("transform_", "speed", "waypoints", "target", "weapon", "turn") instance=ExtResource("12_ox2h0")]
+transform_ = NodePath("../ComponentTransform")
+speed = NodePath("../SpeedComponent")
+waypoints = NodePath("../ComponentWaypoints")
+target = NodePath("../ComponentTarget")
+weapon = NodePath("../ComponentWeapon")
+turn = NodePath("../ComponentTurn")
+
+[node name="RtsSystemWeapon" parent="." node_paths=PackedStringArray("target", "weapon", "team") instance=ExtResource("15_1aory")]
+target = NodePath("../ComponentTarget")
+weapon = NodePath("../ComponentWeapon")
+team = NodePath("../ComponentTeam")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_8frd7")
+
+[node name="ComponentTeam" parent="." instance=ExtResource("7_s2scv")]
+
+[node name="SystemWaypointsDraw" parent="." node_paths=PackedStringArray("component_waypoints", "component_transform", "component_select") instance=ExtResource("16_67g3t")]
+component_waypoints = NodePath("../ComponentWaypoints")
+component_transform = NodePath("../ComponentTransform")
+component_select = NodePath("../Area2D")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://diffv0287wfia"]
+
+[sub_resource type="GDScript" id="GDScript_5cke3"]
+script/source = "extends Node2D
+
+class_name SystemRemoveEntity
+
+"
+
+[node name="SystemRemoveEntity" type="Node2D"]
+script = SubResource("GDScript_5cke3")

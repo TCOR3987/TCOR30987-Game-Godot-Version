@@ -2,6 +2,8 @@ extends Node2D
 
 class_name SceneShipCombat
 
+var carrier_template = preload("res://rts/entities/carrier/RtsEntityCarrier.tscn")
+
 @export var selected_scene:ComponentSceneSelect
 
 
@@ -37,7 +39,6 @@ func _on_stop_button_up():
 	SignalBus.emit_signal("waypoints_clear")
 	pass # Replace with function body.
 
-
 func _on_speed_0_button_up():
 	SignalBus.emit_signal("speed_change", 0)
 	pass # Replace with function body.
@@ -62,7 +63,37 @@ func _on_speed_5_button_up():
 	SignalBus.emit_signal("speed_change", 5)
 	pass # Replace with function body.
 
-
 func _on_missile_button_up():
 	Globals.ship_combat_ability = Globals.ship_combat_enum_abilities.missile
 	pass # Replace with function body.
+
+func _ready():
+	spawn_player_carrier(1)
+
+func spawn_player_carrier(v:int):
+	var new_carrier = carrier_template.instantiate()
+	new_carrier.set_team(1)
+	self.add_child(new_carrier)
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

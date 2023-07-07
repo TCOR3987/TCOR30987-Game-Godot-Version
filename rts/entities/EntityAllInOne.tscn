@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bso8r7bir2ceb"]
+
+[ext_resource type="Script" path="res://rts/entities/EntityAllInOne.gd" id="1_1olgv"]
+
+[node name="EntityAllInOne" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_1olgv")

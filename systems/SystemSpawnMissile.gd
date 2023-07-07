@@ -5,7 +5,6 @@ class_name SystemSpawnMissile
 var missile_template = preload("res://entities/missile/EntityMissile.tscn")
 @export var component_select:ComponentSelect
 
-
 func _ready():
 	SignalBus.connect("fire_missile", fire_missile)
 	pass # Replace with function body.
@@ -20,5 +19,3 @@ func fire_missile(id):
 		new_missile.set_transform_(self.global_position)
 		new_missile.set_target(id)
 		get_parent().get_parent().add_child(new_missile)
-		print(get_parent().get_children())
-		print(new_missile.get_parent())
